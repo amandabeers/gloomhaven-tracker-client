@@ -10,6 +10,7 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Roles from './../Roles/Roles'
 import Role from './../Roles/Role'
+import Character from './../Characters/Character'
 
 class App extends Component {
   constructor () {
@@ -59,6 +60,9 @@ class App extends Component {
           <Route exact path='/roles' component={Roles} />
           <Route exact path='/roles/:id' render={() => (
             <Role user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/characters/:id' render={() => (
+            <Character alert={this.alert} user={user} />
           )} />
         </main>
       </Fragment>

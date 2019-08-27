@@ -31,8 +31,8 @@ class Role extends Component {
         { role && (
           <Fragment>
             <h3 className="text-center mt-3 mb-4">{role.role_name}</h3>
-            <div className="char-wrapper">
-              <img className="char-img" src={`${process.env.PUBLIC_URL}/char_img/${role.char_img}`} alt={`An image of the ${role.role_name}`}/>
+            <div className="class-wrapper">
+              <img className="class-img" src={`${process.env.PUBLIC_URL}/char_img/${role.char_img}`} alt={`An image of the ${role.role_name}`}/>
               <div className="w-50 pl-3">
                 <p>{role.description}</p>
                 {(this.props.user) ? <Button href={`#/roles/${role._id}/add`}>Choose this Class</Button> : <p>Sign in to create a character with this class!</p>}
