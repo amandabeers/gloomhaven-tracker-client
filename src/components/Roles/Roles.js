@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
 
@@ -14,7 +15,6 @@ class Roles extends Component {
   async componentDidMount () {
     try {
       const res = await axios(`${apiUrl}/roles`)
-      console.log(res)
       this.setState({ roles: res.data.roles })
     } catch (error) {
       console.error(error)
@@ -27,20 +27,24 @@ class Roles extends Component {
     if (roles.length === 0) {
       return (
         <div>
-          <h3>Available Roles</h3>
-          <p>No roles found</p>
+          <h3 className="mt-3 mb-4 text-center">Gloomhaven Starter Classes</h3>
         </div>
       )
     } else {
       return (
-        <div>
-          <h3>Available Roles</h3>
-          {roles.map(role => (
-            <Fragment key={role.id}>
-              <p>{role.role_name}</p>
-            </Fragment>
-          ))}
-        </div>
+        <Fragment>
+          <h3 className="mt-3 mb-4 text-center">Gloomhaven Starter Classes</h3>
+          <div className="d-flex flex-wrap justify-content-center">
+            {roles.map(role => (
+              <div key={role.id} className="mb-5 pl-2 pr-2">
+                <h4 className="text-center">{role.role_name}</h4>
+                <Link to={`/roles/${role.id}`}>
+                  <img src={`${process.env.PUBLIC_URL}/char_img_sm/${role.char_img_sm}`} alt={`An image of the ${role.role_name}`}/>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </Fragment>
       )
     }
   }
