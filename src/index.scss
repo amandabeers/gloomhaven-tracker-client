@@ -5,3 +5,16 @@ main {
   justify-self: center;
   margin: auto;
 }
+
+.char-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 75%;
+  margin: auto;
+}
+
+.char-img {
+  width: 350px;
+  height: 490px;
+}

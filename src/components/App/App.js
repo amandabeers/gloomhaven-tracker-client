@@ -56,8 +56,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <Route path='/roles' component={Roles} />
-          <Route path='/roles/:id' render={() => (
+          <Route exact path='/roles' component={Roles} />
+          <Route exact path='/roles/:id' render={() => (
             <Role user={user} />
           )} />
         </main>
