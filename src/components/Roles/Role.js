@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
@@ -36,6 +36,7 @@ class Role extends Component {
               <div className="w-50 pl-3">
                 <p>{role.description}</p>
                 {(this.props.user) ? <Button href={`#/roles/${role._id}/add`}>Choose this Class</Button> : <p>Sign in to create a character with this class!</p>}
+                <Link to='/roles'>Back to all classes</Link>
               </div>
             </div>
           </Fragment>
