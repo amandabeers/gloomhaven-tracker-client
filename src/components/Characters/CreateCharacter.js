@@ -25,8 +25,7 @@ class CreateCharacter extends Component {
       character: {
         name: '',
         level: '',
-        experience: null,
-        roleId: null
+        experience: null
       },
       role: null
     }
