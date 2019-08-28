@@ -1,0 +1,116 @@
+import React, { Component, Fragment } from 'react'
+import { withRouter } from 'react-router-dom'
+import axios from 'axios'
+import apiUrl from './../../apiConfig'
+
+import GenUpdateForm from './GenUpdateForm'
+
+class ScenarioSuccess extends Component {
+  constructor () {
+    super()
+
+    this.state = {
+      character: null,
+      xpGain: 0,
+      goldChange: 0,
+      goldToggle: true
+    }
+  }
+
+  async componentDidMount () {
+    try {
+      const res = await axios({
+        url: `${apiUrl}/characters/${this.props.match.params.id}`,
+        method: 'GET',
+        headers: {
+          'Authorization': `Token token=${this.props.user.token}`
+        }
+      })
+      this.setState({ character: res.data.character })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  handleChange = event => {
+    const fieldName = event.target.name
+    if (fieldName === 'xpGain' || fieldName === 'goldChange') {
+      this.setState({ ...this.state, [fieldName]: event.target.value })
+    } else {
+      this.setState({ character: { ...this.state.character, [fieldName]: event.target.value } })
+    }
+  }
+
+  handleToggle = event => {
+    this.setState({ goldToggle: !this.state.goldToggle })
+  }
+
+  handleSubmit = async (event) => {
+    event.preventDefault()
+    const { character, xpGain, goldChange, goldToggle } = this.state
+    const xp = parseInt(character.experience) + parseInt(xpGain)
+    let gold
+    if (goldToggle) {
+      gold = parseInt(character.gold) + parseInt(goldChange)
+    } else {
+      gold = parseInt(character.gold) - parseInt(goldChange)
+      if (gold < 0) {
+        this.props.alert({ heading: 'Error',
+          message: 'You cannot have negative gold!',
+          variant: 'danger'
+        })
+        return
+      }
+    }
+    try {
+      const res = await axios({
+        url: `${apiUrl}/characters/${character.id}`,
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Token token=${this.props.user.token}`
+        },
+        data: {
+          character: {
+            experience: xp,
+            gold: gold,
+            items: character.items,
+            notes: character.notes
+          }
+        }
+      })
+      this.props.alert({ heading: 'Success!',
+        message: 'Your character has been updated',
+        variant: 'success'
+      })
+      this.props.history.push(`/characters/${res.data.character.id}`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  render () {
+    const { character } = this.state
+
+    if (!character) {
+      return (
+        <h2 className="header">Character Update after Scenario Success</h2>
+      )
+    } else {
+      return (
+        <Fragment>
+          <h2 className="header">Character Update after Scenario Success</h2>
+          <GenUpdateForm
+            character={character}
+            xpGain={this.xpGain}
+            goldChange={this.goldChange}
+            handleChange={this.handleChange}
+            handleToggle={this.handleToggle}
+            handleSubmit={this.handleSubmit}
+          />
+        </Fragment>
+      )
+    }
+  }
+}
+
+export default withRouter(ScenarioSuccess)

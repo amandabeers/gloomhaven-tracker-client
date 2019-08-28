@@ -13,6 +13,7 @@ import Role from './../Roles/Role'
 import Characters from './../Characters/Characters'
 import Character from './../Characters/Character'
 import CreateCharacter from './../Characters/CreateCharacter'
+import ScenarioSuccess from './../Characters/ScenarioSuccess'
 
 class App extends Component {
   constructor () {
@@ -71,6 +72,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/characters/:id' render={() => (
             <Character alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/characters/:id/scenario-update' render={() => (
+            <ScenarioSuccess alert={this.alert} user={user} />
           )} />
         </main>
       </Fragment>

@@ -64,6 +64,9 @@ class Character extends Component {
               <Button variant="danger" onClick={handleShow}>
                 Delete
               </Button>
+              <Button variant="success" as="a" href={`#characters/${character.id}/scenario-update`}>
+                Scenario Success Update
+              </Button>
             </div>
             <div className="char-wrapper">
               <p>Total Experience: {character.experience}</p>
