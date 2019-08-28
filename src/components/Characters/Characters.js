@@ -23,9 +23,7 @@ class Characters extends Component {
           'Authorization': `Token token=${this.props.user.token}`
         }
       })
-      console.log(res)
       this.setState({ characters: res.data.characters })
-      console.log(this.state)
     } catch (error) {
       console.error(error)
     }

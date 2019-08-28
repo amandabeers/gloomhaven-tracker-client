@@ -12,6 +12,7 @@ import Roles from './../Roles/Roles'
 import Role from './../Roles/Role'
 import Characters from './../Characters/Characters'
 import Character from './../Characters/Character'
+import CreateCharacter from './../Characters/CreateCharacter'
 
 class App extends Component {
   constructor () {
@@ -61,6 +62,9 @@ class App extends Component {
           <Route exact path='/roles' component={Roles} />
           <Route exact path='/roles/:id' render={() => (
             <Role user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/roles/:id/create-character' render={() => (
+            <CreateCharacter alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/characters' render={() => (
             <Characters alert={this.alert} user={user} />

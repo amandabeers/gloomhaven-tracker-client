@@ -16,7 +16,6 @@ class Role extends Component {
   async componentDidMount () {
     try {
       const res = await axios(`${apiUrl}/roles/${this.props.match.params.id}`)
-      console.log(res)
       this.setState({ role: res.data.role })
     } catch (error) {
       console.error(error)
@@ -35,7 +34,7 @@ class Role extends Component {
               <img className="class-img" src={`${process.env.PUBLIC_URL}/char_img/${role.char_img}`} alt={`An image of the ${role.role_name}`}/>
               <div className="w-50 pl-3">
                 <p>{role.description}</p>
-                {(this.props.user) ? <Button className="mb-2" href={`#/roles/${role._id}/add`}>Choose this Class</Button> : <p>Sign in to create a character with this class!</p>}
+                {(this.props.user) ? <Button className="mb-2" href={`#/roles/${role.id}/create-character`}>Choose this Class</Button> : <p>Sign in to create a character with this class!</p>}
                 <br/>
                 <Link to='/roles'>Back to all classes</Link>
               </div>
