@@ -10,6 +10,7 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Roles from './../Roles/Roles'
 import Role from './../Roles/Role'
+import Characters from './../Characters/Characters'
 import Character from './../Characters/Character'
 
 class App extends Component {
@@ -61,7 +62,10 @@ class App extends Component {
           <Route exact path='/roles/:id' render={() => (
             <Role user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/characters/:id' render={() => (
+          <AuthenticatedRoute user={user} exact path='/characters' render={() => (
+            <Characters alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/characters/:id' render={() => (
             <Character alert={this.alert} user={user} />
           )} />
         </main>

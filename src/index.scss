@@ -6,15 +6,32 @@ main {
   margin: auto;
 }
 
+.char-list-img {
+  border-radius: 5px;
+  height: 140px;
+  width: 100px;
+}
+
+.char-list-wrapper {
+  display: flex;
+  margin: auto;
+  // width: 75%;
+}
+
 .class-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 75%;
   margin: auto;
+  width: 75%;
 }
 
 .class-img {
-  width: 350px;
   height: 490px;
+  width: 350px;
+}
+
+.header {
+  margin-bottom: ($spacer * 1.5);
+  margin-top: ($spacer);
 }

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 // // import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
@@ -35,7 +35,7 @@ class Character extends Component {
       <div>
         { character && (
           <Fragment>
-            <h2 className="mt-3 mb-4">Character Information</h2>
+            <h2 className="header">Character Information</h2>
             <h4 className="mb-3">{character.name} | {character.role.role_name} | Level {character.level}</h4>
             <div className="char-wrapper">
               <p>Total Experience: {character.experience}</p>
@@ -45,6 +45,7 @@ class Character extends Component {
               <h6>Notes</h6>
               <p>{character.notes}</p>
             </div>
+            <Link to='/characters'>Back to all characters</Link>
           </Fragment>
         )}
       </div>

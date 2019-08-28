@@ -30,12 +30,13 @@ class Role extends Component {
       <div>
         { role && (
           <Fragment>
-            <h3 className="text-center mt-3 mb-4">{role.role_name}</h3>
+            <h3 className="header text-center">{role.role_name}</h3>
             <div className="class-wrapper">
               <img className="class-img" src={`${process.env.PUBLIC_URL}/char_img/${role.char_img}`} alt={`An image of the ${role.role_name}`}/>
               <div className="w-50 pl-3">
                 <p>{role.description}</p>
-                {(this.props.user) ? <Button href={`#/roles/${role._id}/add`}>Choose this Class</Button> : <p>Sign in to create a character with this class!</p>}
+                {(this.props.user) ? <Button className="mb-2" href={`#/roles/${role._id}/add`}>Choose this Class</Button> : <p>Sign in to create a character with this class!</p>}
+                <br/>
                 <Link to='/roles'>Back to all classes</Link>
               </div>
             </div>

@@ -27,13 +27,13 @@ class Roles extends Component {
     if (roles.length === 0) {
       return (
         <div>
-          <h3 className="mt-3 mb-4 text-center">Gloomhaven Starter Classes</h3>
+          <h2 className="header text-center">Gloomhaven Starter Classes</h2>
         </div>
       )
     } else {
       return (
         <Fragment>
-          <h3 className="mt-3 mb-4 text-center">Gloomhaven Starter Classes</h3>
+          <h2 className="header text-center">Gloomhaven Starter Classes</h2>
           <div className="d-flex flex-wrap justify-content-center">
             {roles.map(role => (
               <div key={role.id} className="mb-5 pl-2 pr-2">
