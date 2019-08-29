@@ -33,7 +33,11 @@ class Character extends Component {
     }
   }
 
-  async componentDidMount () {
+  componentDidMount () {
+    this.loadCharacter()
+  }
+
+  loadCharacter = async () => {
     try {
       const res = await axios({
         url: `${apiUrl}/characters/${this.props.match.params.id}`,
@@ -95,7 +99,9 @@ class Character extends Component {
         message: 'Your character has leveled up!',
         variant: 'success'
       })
-      this.props.history.push(`/characters/${res.data.character.id}`)
+      if (res) {
+        this.loadCharacter()
+      }
     } catch (error) {
       console.error(error)
     }
@@ -105,10 +111,6 @@ class Character extends Component {
     const { character, show, nextLevelXp, canCharLevel } = this.state
     const handleClose = () => this.setState({ show: false })
     const handleShow = () => this.setState({ show: true })
-
-    // const levelOptions = {}
-    // levelOptions.disablebutton = (character && (canCharLevel && character.location === 'Gloomhaven')) ? '' : 'disabled'
-    // const levelDisabled = (character && (canCharLevel && character.location === 'Gloomhaven')
 
     return (
       <div>
@@ -134,7 +136,7 @@ class Character extends Component {
                 <h6>Experience</h6>
                 {(canCharLevel && character.location === 'Gloomhaven') ? <Button variant="success" size="sm" onClick={this.handleLevelUp}>Level Up</Button> : ''}
               </div>
-              <p>Total: {character.experience} | Until next Level: {nextLevelXp > character.experience ? `${nextLevelXp - character.experience}` : 'You can level up when you return to Gloomhaven!'}</p>
+              <p>Total: {character.experience} | {nextLevelXp > character.experience ? `Unitl next level: ${nextLevelXp - character.experience}` : 'You can level up once in Gloomhaven'}</p>
               <h6>Gold</h6>
               <p>Gold: {character.gold}</p>
               <h6>Items</h6>
