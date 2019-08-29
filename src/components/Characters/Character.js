@@ -107,6 +107,33 @@ class Character extends Component {
     }
   }
 
+  handleDonation = async () => {
+    const { character } = this.state
+    try {
+      const res = await axios({
+        url: `${apiUrl}/characters/${character.id}`,
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Token token=${this.props.user.token}`
+        },
+        data: {
+          character: {
+            gold: character.gold - 10
+          }
+        }
+      })
+      this.props.alert({ heading: 'Success!',
+        message: 'You have donated 10 gold to the Great Oak and can add two Blessed cards to your deck.',
+        variant: 'success'
+      })
+      if (res) {
+        this.loadCharacter()
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   render () {
     const { character, show, nextLevelXp, canCharLevel } = this.state
     const handleClose = () => this.setState({ show: false })
@@ -137,7 +164,10 @@ class Character extends Component {
                 {(canCharLevel && character.location === 'Gloomhaven') ? <Button variant="success" size="sm" onClick={this.handleLevelUp}>Level Up</Button> : ''}
               </div>
               <p>Total: {character.experience} | {nextLevelXp > character.experience ? `Unitl next level: ${nextLevelXp - character.experience}` : 'You can level up once in Gloomhaven'}</p>
-              <h6>Gold</h6>
+              <div className="d-flex">
+                <h6>Gold</h6>
+                {(character.gold >= 10 && character.location === 'Gloomhaven') ? <Button variant="primary" size="sm" onClick={this.handleDonation}>Donate to Great Oak</Button> : ''}
+              </div>
               <p>Gold: {character.gold}</p>
               <h6>Items</h6>
               <p>{character.items}</p>
