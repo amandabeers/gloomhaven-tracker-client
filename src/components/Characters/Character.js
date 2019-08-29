@@ -8,17 +8,17 @@ import Modal from 'react-bootstrap/Modal'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
 
-// const xpCalc = {
-//   '1': 0,
-//   '2': 45,
-//   '3': 95,
-//   '4': 150,
-//   '5': 210,
-//   '6': 275,
-//   '7': 345,
-//   '8': 420,
-//   '9': 500
-// }
+const xpCalc = {
+  '1': 0,
+  '2': 45,
+  '3': 95,
+  '4': 150,
+  '5': 210,
+  '6': 275,
+  '7': 345,
+  '8': 420,
+  '9': 500
+}
 
 class Character extends Component {
   constructor () {
@@ -26,7 +26,10 @@ class Character extends Component {
 
     this.state = {
       character: null,
-      show: false
+      show: false,
+      nextLevel: null,
+      nextLevelXp: null,
+      canCharLevel: false
     }
   }
 
@@ -39,7 +42,13 @@ class Character extends Component {
           'Authorization': `Token token=${this.props.user.token}`
         }
       })
-      this.setState({ character: res.data.character })
+      const nextLevel = res.data.character.level + 1
+      const nextLevelXp = xpCalc[nextLevel]
+      this.setState({
+        character: res.data.character,
+        nextLevel: nextLevel,
+        nextLevelXp: nextLevelXp
+      })
     } catch (error) {
       console.error(error)
     }
@@ -66,7 +75,7 @@ class Character extends Component {
   }
 
   render () {
-    const { character, show } = this.state
+    const { character, show, nextLevelXp } = this.state
     const handleClose = () => this.setState({ show: false })
     const handleShow = () => this.setState({ show: true })
 
@@ -91,7 +100,7 @@ class Character extends Component {
               <h6>Location</h6>
               <p>{character.location}</p>
               <h6>Experience</h6>
-              <p>Total: {character.experience} | Until next Level: </p>
+              <p>Total: {character.experience} | Until next Level: {nextLevelXp > character.experience ? `${nextLevelXp - character.experience}` : 'You can level up when you return to Gloomhaven!'}</p>
               <h6>Gold</h6>
               <p>Gold: {character.gold}</p>
               <h6>Items</h6>
