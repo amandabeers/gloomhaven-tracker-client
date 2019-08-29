@@ -1,6 +1,6 @@
 {
   "name": "gloomhaven-tracker",
-  "homepage": "https://amandabeers.github.io/gloomhaven-tracker-client",
+  "homepage": "https://amandabeers.github.io/gloomhaven-tracker-client/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
