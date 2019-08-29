@@ -172,22 +172,22 @@ class Character extends Component {
                   </Button>
                 </div>
                 <div className="pl-2 pr-2">
-                  <h5>Location</h5>
+                  <h5 className="char-section-header">Location</h5>
                   <p>{character.location}</p>
-                  <div className="d-flex">
-                    <h5>Experience</h5>
+                  <h5 className="char-section-header">Experience</h5>
+                  <div className="d-flex justify-content-between">
+                    <p>Total: {character.experience} | {nextLevelXp > character.experience ? `Unitl next level: ${nextLevelXp - character.experience}` : 'You can level up once in Gloomhaven'}</p>
                     {(canCharLevel && character.location === 'Gloomhaven') ? <Button variant="success" size="sm" onClick={this.handleLevelUp}>Level Up</Button> : ''}
                   </div>
-                  <p>Total: {character.experience} | {nextLevelXp > character.experience ? `Unitl next level: ${nextLevelXp - character.experience}` : 'You can level up once in Gloomhaven'}</p>
-                  <div className="d-flex">
-                    <h5>Gold</h5>
+                  <h5 className="char-section-header">Gold</h5>
+                  <div className="d-flex justify-content-between">
+                    <p>{character.gold} Coins</p>
                     {(character.gold >= 10 && character.location === 'Gloomhaven') ? <Button variant="primary" size="sm" onClick={this.handleDonation}>Donate to Great Oak</Button> : ''}
                   </div>
-                  <p>{character.gold} Coins</p>
-                  <h5>Items</h5>
-                  <p>{character.items}</p>
-                  <h5>Notes</h5>
-                  <p>{character.notes}</p>
+                  <h5 className="char-section-header">Items</h5>
+                  <p>{character.items ? character.items : 'You don\'t have any items'}</p>
+                  <h5 className="char-section-header">Notes</h5>
+                  <p>{character.notes ? character.notes : 'You don\'t have any notes'}</p>
                 </div>
 
                 <Modal show={show} onHide={handleClose}>

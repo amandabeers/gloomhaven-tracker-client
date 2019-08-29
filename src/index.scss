@@ -23,6 +23,11 @@ main {
   width: 50%;
 }
 
+.char-section-header {
+  display: block;
+  border-bottom: 1px solid black
+}
+
 .char-header {
   text-align: center;
   margin-bottom: ($spacer);
