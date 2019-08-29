@@ -70,6 +70,7 @@ class Character extends Component {
               <DropdownButton title="Update Actions" id="bg-nested-dropdown">
                 <Dropdown.Item eventKey="1" as="a" href={`#characters/${character.id}/scenario-update`}>Scenario Success</Dropdown.Item>
                 <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/event-update`}>City/Road Event</Dropdown.Item>
+                <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/buy-sell-items`}>Buy/Sell Items</Dropdown.Item>
               </DropdownButton>
             </div>
             <div className="char-wrapper">
