@@ -16,6 +16,7 @@ import CreateCharacter from './../Characters/CreateCharacter'
 import ScenarioSuccess from './../Characters/ScenarioSuccess'
 import EventUpdate from './../Characters/EventUpdate'
 import BuySellItems from './../Characters/BuySellItems'
+import ChangeLocation from './../Characters/ChangeLocation'
 
 class App extends Component {
   constructor () {
@@ -83,6 +84,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/characters/:id/buy-sell-items' render={() => (
             <BuySellItems alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/characters/:id/change-location' render={() => (
+            <ChangeLocation alert={this.alert} user={user} />
           )} />
         </main>
       </Fragment>

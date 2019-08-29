@@ -8,6 +8,18 @@ import Modal from 'react-bootstrap/Modal'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
 
+// const xpCalc = {
+//   '1': 0,
+//   '2': 45,
+//   '3': 95,
+//   '4': 150,
+//   '5': 210,
+//   '6': 275,
+//   '7': 345,
+//   '8': 420,
+//   '9': 500
+// }
+
 class Character extends Component {
   constructor () {
     super()
@@ -57,6 +69,7 @@ class Character extends Component {
     const { character, show } = this.state
     const handleClose = () => this.setState({ show: false })
     const handleShow = () => this.setState({ show: true })
+
     return (
       <div>
         { character && (
@@ -71,10 +84,15 @@ class Character extends Component {
                 <Dropdown.Item eventKey="1" as="a" href={`#characters/${character.id}/scenario-update`}>Scenario Success</Dropdown.Item>
                 <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/event-update`}>City/Road Event</Dropdown.Item>
                 <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/buy-sell-items`}>Buy/Sell Items</Dropdown.Item>
+                <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/change-location`}>Change Location</Dropdown.Item>
               </DropdownButton>
             </div>
             <div className="char-wrapper">
-              <p>Total Experience: {character.experience}</p>
+              <h6>Location</h6>
+              <p>{character.location}</p>
+              <h6>Experience</h6>
+              <p>Total: {character.experience} | Until next Level: </p>
+              <h6>Gold</h6>
               <p>Gold: {character.gold}</p>
               <h6>Items</h6>
               <p>{character.items}</p>

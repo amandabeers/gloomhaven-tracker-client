@@ -2,26 +2,26 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const BuySellForm = ({ character, goldChange, handleChange, handleSubmit }) => (
+const LocationForm = ({ character, handleChange, handleSubmit }) => (
   <Form onSubmit={handleSubmit}>
-    <Form.Group controlId="experience">
-      <Form.Label>Change in Gold | Current Gold: {character.gold}</Form.Label>
+    <Form.Group controlId="location">
+      <Form.Label>Location</Form.Label>
       <Form.Control
-        name="goldChange"
-        type="number"
-        placeholder="Change in Gold"
-        value={goldChange}
+        name="location"
+        type="text"
+        placeholder="Location Name"
+        value={character.location}
         onChange={handleChange}
       />
     </Form.Group>
 
-    <Form.Group controlId="items">
-      <Form.Label>Items</Form.Label>
+    <Form.Group controlId="notes">
+      <Form.Label>Notes</Form.Label>
       <Form.Control as="textarea" rows="3"
-        name="items"
+        name="notes"
         type="text"
-        placeholder="Items"
-        value={character.items ? character.items : ''}
+        placeholder="Notes"
+        value={character.notes ? character.notes : ''}
         onChange={handleChange}
       />
     </Form.Group>
@@ -35,4 +35,4 @@ const BuySellForm = ({ character, goldChange, handleChange, handleSubmit }) => (
   </Form>
 )
 
-export default BuySellForm
+export default LocationForm
