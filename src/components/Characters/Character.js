@@ -156,53 +156,58 @@ class Character extends Component {
         { character && (
           <Fragment>
             <h2 className="header">Character Information</h2>
-            <div className="d-flex justify-content-between">
-              <h4 className="mb-3">{character.name} | {character.role.role_name} | Level {character.level}</h4>
-              <Button variant="danger" onClick={handleShow}>
-                Delete
-              </Button>
-              <DropdownButton title="Update Actions" id="bg-nested-dropdown">
-                <Dropdown.Item eventKey="1" as="a" href={`#characters/${character.id}/scenario-update`}>Scenario Success</Dropdown.Item>
-                <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/event-update`}>City/Road Event</Dropdown.Item>
-                <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/buy-sell-items`}>Buy/Sell Items</Dropdown.Item>
-                <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/change-location`}>Change Location</Dropdown.Item>
-              </DropdownButton>
-            </div>
             <div className="char-wrapper">
-              <h6>Location</h6>
-              <p>{character.location}</p>
-              <div className="d-flex">
-                <h6>Experience</h6>
-                {(canCharLevel && character.location === 'Gloomhaven') ? <Button variant="success" size="sm" onClick={this.handleLevelUp}>Level Up</Button> : ''}
+              <img className="class-img" src={`${process.env.PUBLIC_URL}/char_img/${character.role.char_img}`} alt={`An image of the ${character.role.role_name}`}/>
+              <div className="char-info">
+                <h4 className="char-header">{character.name} | {character.role.role_name} | Level {character.level}</h4>
+                <div className="d-flex justify-content-between mb-2">
+                  <DropdownButton title="Update Actions" size="sm" id="bg-nested-dropdown">
+                    <Dropdown.Item eventKey="1" as="a" href={`#characters/${character.id}/scenario-update`}>Scenario Success</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/event-update`}>City/Road Event</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/buy-sell-items`}>Buy/Sell Items</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/change-location`}>Change Location</Dropdown.Item>
+                  </DropdownButton>
+                  <Button variant="danger" size="sm" onClick={handleShow}>
+                    Delete
+                  </Button>
+                </div>
+                <div className="pl-2 pr-2">
+                  <h5>Location</h5>
+                  <p>{character.location}</p>
+                  <div className="d-flex">
+                    <h5>Experience</h5>
+                    {(canCharLevel && character.location === 'Gloomhaven') ? <Button variant="success" size="sm" onClick={this.handleLevelUp}>Level Up</Button> : ''}
+                  </div>
+                  <p>Total: {character.experience} | {nextLevelXp > character.experience ? `Unitl next level: ${nextLevelXp - character.experience}` : 'You can level up once in Gloomhaven'}</p>
+                  <div className="d-flex">
+                    <h5>Gold</h5>
+                    {(character.gold >= 10 && character.location === 'Gloomhaven') ? <Button variant="primary" size="sm" onClick={this.handleDonation}>Donate to Great Oak</Button> : ''}
+                  </div>
+                  <p>{character.gold} Coins</p>
+                  <h5>Items</h5>
+                  <p>{character.items}</p>
+                  <h5>Notes</h5>
+                  <p>{character.notes}</p>
+                </div>
+
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Delete Confirmation</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>Are you sure you want to delete this character?</Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      No
+                    </Button>
+                    <Button variant="primary" onClick={this.deleteCharacter}>
+                      Yes
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+
+                <Link to='/characters'>Back to all characters</Link>
               </div>
-              <p>Total: {character.experience} | {nextLevelXp > character.experience ? `Unitl next level: ${nextLevelXp - character.experience}` : 'You can level up once in Gloomhaven'}</p>
-              <div className="d-flex">
-                <h6>Gold</h6>
-                {(character.gold >= 10 && character.location === 'Gloomhaven') ? <Button variant="primary" size="sm" onClick={this.handleDonation}>Donate to Great Oak</Button> : ''}
-              </div>
-              <p>Gold: {character.gold}</p>
-              <h6>Items</h6>
-              <p>{character.items}</p>
-              <h6>Notes</h6>
-              <p>{character.notes}</p>
             </div>
-
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title>Delete Confirmation</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>Are you sure you want to delete this character?</Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  No
-                </Button>
-                <Button variant="primary" onClick={this.deleteCharacter}>
-                  Yes
-                </Button>
-              </Modal.Footer>
-            </Modal>
-
-            <Link to='/characters'>Back to all characters</Link>
           </Fragment>
         )}
       </div>

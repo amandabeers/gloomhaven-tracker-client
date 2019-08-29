@@ -18,6 +18,23 @@ main {
   // width: 75%;
 }
 
+.char-info {
+  padding: 0.5em 1em;
+  width: 50%;
+}
+
+.char-header {
+  text-align: center;
+  margin-bottom: ($spacer);
+}
+
+.char-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
 .class-wrapper {
   display: flex;
   flex-wrap: wrap;
