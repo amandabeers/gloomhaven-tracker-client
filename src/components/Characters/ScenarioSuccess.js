@@ -12,8 +12,7 @@ class ScenarioSuccess extends Component {
     this.state = {
       character: null,
       xpGain: 0,
-      goldChange: 0,
-      goldToggle: true
+      goldChange: 0
     }
   }
 
@@ -41,27 +40,28 @@ class ScenarioSuccess extends Component {
     }
   }
 
-  handleToggle = event => {
-    this.setState({ goldToggle: !this.state.goldToggle })
-  }
-
   handleSubmit = async (event) => {
     event.preventDefault()
-    const { character, xpGain, goldChange, goldToggle } = this.state
+    const { character, xpGain, goldChange } = this.state
     const xp = parseInt(character.experience) + parseInt(xpGain)
-    let gold
-    if (goldToggle) {
-      gold = parseInt(character.gold) + parseInt(goldChange)
-    } else {
-      gold = parseInt(character.gold) - parseInt(goldChange)
-      if (gold < 0) {
-        this.props.alert({ heading: 'Error',
-          message: 'You cannot have negative gold!',
-          variant: 'danger'
-        })
-        return
-      }
+    const gold = parseInt(character.gold) + parseInt(goldChange)
+
+    if (gold < 0) {
+      this.props.alert({ heading: 'Error',
+        message: 'You cannot have negative gold!',
+        variant: 'danger'
+      })
+      return
     }
+
+    if (xp < 0) {
+      this.props.alert({ heading: 'Error',
+        message: 'You cannot have negative experience!',
+        variant: 'danger'
+      })
+      return
+    }
+
     try {
       const res = await axios({
         url: `${apiUrl}/characters/${character.id}`,
@@ -104,7 +104,6 @@ class ScenarioSuccess extends Component {
             xpGain={this.xpGain}
             goldChange={this.goldChange}
             handleChange={this.handleChange}
-            handleToggle={this.handleToggle}
             handleSubmit={this.handleSubmit}
           />
         </Fragment>
