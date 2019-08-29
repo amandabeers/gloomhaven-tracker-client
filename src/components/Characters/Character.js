@@ -56,7 +56,10 @@ class Character extends Component {
         canCharLevel: canCharLevel
       })
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 
@@ -76,7 +79,10 @@ class Character extends Component {
       })
       this.props.history.push('/characters')
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 
@@ -96,14 +102,17 @@ class Character extends Component {
         }
       })
       this.props.alert({ heading: 'Success!',
-        message: 'Your character has leveled up!',
+        message: 'Your character has leveled up! You may add a card to your deck, take a perk, and increase your health.',
         variant: 'success'
       })
       if (res) {
         this.loadCharacter()
       }
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 
@@ -130,7 +139,10 @@ class Character extends Component {
         this.loadCharacter()
       }
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 

@@ -25,7 +25,10 @@ class Characters extends Component {
       })
       this.setState({ characters: res.data.characters })
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 

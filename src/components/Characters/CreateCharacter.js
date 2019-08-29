@@ -36,7 +36,10 @@ class CreateCharacter extends Component {
       const res = await axios(`${apiUrl}/roles/${this.props.match.params.id}`)
       this.setState({ role: res.data.role })
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 
@@ -70,7 +73,10 @@ class CreateCharacter extends Component {
       })
       this.props.history.push(`/characters/${res.data.character.id}`)
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 

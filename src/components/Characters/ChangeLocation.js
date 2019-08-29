@@ -25,7 +25,10 @@ class ChangeLocation extends Component {
       })
       this.setState({ character: res.data.character })
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 
@@ -52,12 +55,15 @@ class ChangeLocation extends Component {
         }
       })
       this.props.alert({ heading: 'Success!',
-        message: 'Your character has been updated',
+        message: 'Your character\'s location has been updated',
         variant: 'success'
       })
       this.props.history.push(`/characters/${res.data.character.id}`)
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 

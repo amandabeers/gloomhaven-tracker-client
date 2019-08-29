@@ -26,7 +26,10 @@ class BuySellItems extends Component {
       })
       this.setState({ character: res.data.character })
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 
@@ -72,7 +75,10 @@ class BuySellItems extends Component {
       })
       this.props.history.push(`/characters/${res.data.character.id}`)
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 

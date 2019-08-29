@@ -17,7 +17,10 @@ class Roles extends Component {
       const res = await axios(`${apiUrl}/roles`)
       this.setState({ roles: res.data.roles })
     } catch (error) {
-      console.error(error)
+      this.props.alert({ heading: 'Error',
+        message: 'Oops! Something went wrong.',
+        variant: 'danger'
+      })
     }
   }
 
