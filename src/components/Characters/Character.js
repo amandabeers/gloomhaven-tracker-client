@@ -2,9 +2,12 @@ import React, { Component, Fragment } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 // import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+// import DropdownButton from 'react-bootstrap/DropdownButton'
+// import Dropdown from 'react-bootstrap/Dropdown'
 import Modal from 'react-bootstrap/Modal'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
 
@@ -160,17 +163,26 @@ class Character extends Component {
               <img className="class-img" src={`${process.env.PUBLIC_URL}/char_img/${character.role.char_img}`} alt={`An image of the ${character.role.role_name}`}/>
               <div className="char-info">
                 <h4 className="char-header">{character.name} | {character.role.role_name} | Level {character.level}</h4>
-                <div className="d-flex justify-content-between mb-2">
-                  <DropdownButton title="Update Actions" size="sm" id="bg-nested-dropdown">
-                    <Dropdown.Item eventKey="1" as="a" href={`#characters/${character.id}/scenario-update`}>Scenario Success</Dropdown.Item>
-                    <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/event-update`}>City/Road Event</Dropdown.Item>
-                    <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/buy-sell-items`}>Buy/Sell Items</Dropdown.Item>
-                    <Dropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/change-location`}>Change Location</Dropdown.Item>
-                  </DropdownButton>
-                  <Button variant="danger" size="sm" onClick={handleShow}>
-                    Delete
-                  </Button>
-                </div>
+
+                <Navbar bg="light" expand="lg">
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                      <NavDropdown title="Update Actions" id="basic-nav-dropdown">
+                        <NavDropdown.Item eventKey="1" as="a" href={`#characters/${character.id}/scenario-update`}>Scenario Success</NavDropdown.Item>
+                        <NavDropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/event-update`}>City/Road Event</NavDropdown.Item>
+                        <NavDropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/buy-sell-items`}>Buy/Sell Items</NavDropdown.Item>
+                        <NavDropdown.Item eventKey="2" as="a" href={`#characters/${character.id}/change-location`}>Change Location</NavDropdown.Item>
+                      </NavDropdown>
+                    </Nav>
+                    <Nav>
+                      <Button variant="outline-danger" size="sm" onClick={handleShow}>
+                        Delete
+                      </Button>
+                    </Nav>
+                  </Navbar.Collapse>
+                </Navbar>
+
                 <div className="pl-2 pr-2">
                   <h5 className="char-section-header">Location</h5>
                   <p>{character.location}</p>
