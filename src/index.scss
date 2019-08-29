@@ -12,8 +12,18 @@ main {
   width: 100px;
 }
 
+.char-list-stats {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  padding-bottom: 0;
+  width: 33vh;
+}
+
 .char-list-wrapper {
   display: flex;
+  flex-wrap: wrap;
   margin: auto;
   // width: 75%;
 }

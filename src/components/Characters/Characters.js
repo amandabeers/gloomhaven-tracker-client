@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import ListGroup from 'react-bootstrap/ListGroup'
 // import Button from 'react-bootstrap/Button'
 import axios from 'axios'
@@ -54,16 +54,43 @@ class Characters extends Component {
           <h2 className="header">Characters</h2>
           <ListGroup>
             {characters.map(char => (
-              <ListGroup.Item as="a" href={`#characters/${char.id}`} key={char.id}>
-                <div className="char-list-wrapper">
-                  <img className="char-list-img" src={`${process.env.PUBLIC_URL}/char_img/${char.role.char_img}`} alt={`An image of the ${char.role.role_name}`}/>
-                  <div className="ml-3">
-                    <h5>{char.name}</h5>
-                    <h5>{char.role.role_name}</h5>
-                    <h5>Level {char.level}</h5>
+              <Link to={`/characters/${char.id}`} key={char.id} style={{ textDecoration: 'none' }}>
+                <ListGroup.Item>
+                  <div className="char-list-wrapper">
+                    <img className="char-list-img" src={`${process.env.PUBLIC_URL}/char_img/${char.role.char_img}`} alt={`An image of the ${char.role.role_name}`}/>
+                    <div className="d-flex flex-wrap align-items-center">
+                      <div className="ml-4">
+                        <div className="char-list-stats">
+                          <h5 className="pb-0 mb-0">Name</h5>
+                          <h5 className="pb-0 mb-0">{char.name}</h5>
+                        </div>
+                        <div className="char-list-stats">
+                          <h5 className="pb-0 mb-0">Class</h5>
+                          <h5 className="pb-0 mb-0">{char.role.role_name}</h5>
+                        </div>
+                        <div className="char-list-stats">
+                          <h5 className="pb-0 mb-0">Level</h5>
+                          <h5 className="pb-0 mb-0">{char.level}</h5>
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <div className="char-list-stats">
+                          <h5 className="pb-0 mb-0">Location</h5>
+                          <h5 className="pb-0 mb-0">{char.location}</h5>
+                        </div>
+                        <div className="char-list-stats">
+                          <h5 className="pb-0 mb-0">Total XP</h5>
+                          <h5 className="pb-0 mb-0">{char.experience} XP</h5>
+                        </div>
+                        <div className="char-list-stats">
+                          <h5 className="pb-0 mb-0">Gold</h5>
+                          <h5 className="pb-0 mb-0">{char.gold} Coins</h5>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </ListGroup.Item>
+                </ListGroup.Item>
+              </Link>
             ))}
           </ListGroup>
         </Fragment>
