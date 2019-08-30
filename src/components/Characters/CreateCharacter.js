@@ -90,7 +90,7 @@ class CreateCharacter extends Component {
     } else {
       return (
         <Fragment>
-          <h2 className="header">Create a Character</h2>
+          <h2 className="header text-center">Create a Character</h2>
           <div className="class-wrapper">
             <img className="class-img" src={`${process.env.PUBLIC_URL}/char_img/${role.char_img}`} alt={`An image of the ${role.role_name}`}/>
             <div className="w-50 pl-3">
