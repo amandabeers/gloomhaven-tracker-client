@@ -17,6 +17,7 @@ import ScenarioSuccess from './../Characters/ScenarioSuccess'
 import EventUpdate from './../Characters/EventUpdate'
 import BuySellItems from './../Characters/BuySellItems'
 import ChangeLocation from './../Characters/ChangeLocation'
+import Home from './../Home/Home'
 
 class App extends Component {
   constructor () {
@@ -64,7 +65,7 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
           <Route exact path='/' render={() => (
-            <Roles alert={this.alert}/>
+            <Home alert={this.alert}/>
           )} />
           <Route exact path='/roles' render={() => (
             <Roles alert={this.alert}/>

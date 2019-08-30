@@ -33,6 +33,11 @@ main {
   width: 50%;
 }
 
+.char-home-img {
+  height: 245px;
+  width: 175px;
+}
+
 .char-section-header {
   display: block;
   border-bottom: 1px solid black
@@ -64,6 +69,28 @@ main {
 }
 
 .header {
+  font-family: 'Cinzel Decorative', cursive;
+  font-weight: bold;
   margin-bottom: ($spacer * 1.5);
   margin-top: ($spacer);
+}
+
+.header-font {
+  font-family: 'Cinzel Decorative', cursive;
+  font-weight: bold;
+}
+
+.home-imgs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-wrapper {
+  margin: auto;
+  text-align: center;
+}
+
+.nav-color {
+  background-color: #f32d27;
 }

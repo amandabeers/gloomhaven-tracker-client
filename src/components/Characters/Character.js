@@ -158,7 +158,7 @@ class Character extends Component {
       <div>
         { character && (
           <Fragment>
-            <h2 className="header">Character Information</h2>
+            <h2 className="header text-center">Character Information</h2>
             <div className="char-wrapper">
               <img className="class-img" src={`${process.env.PUBLIC_URL}/char_img/${character.role.char_img}`} alt={`An image of the ${character.role.role_name}`}/>
               <div className="char-info">

@@ -25,8 +25,8 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
+  <Navbar className="nav-color" variant="dark" expand="md">
+    <Navbar.Brand className="header-font" href="#">
       Gloomhaven Character Log
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
