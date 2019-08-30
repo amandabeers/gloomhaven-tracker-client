@@ -50,7 +50,8 @@ class ChangeLocation extends Component {
         },
         data: {
           character: {
-            location: character.location
+            location: character.location,
+            notes: character.notes
           }
         }
       })

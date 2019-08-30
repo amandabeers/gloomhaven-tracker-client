@@ -22,6 +22,7 @@ const CreateForm = ({ character, handleChange, handleSubmit }) => (
         name="level"
         type="number"
         placeholder="Level"
+        max="9"
         value={character.level}
         onChange={handleChange}
         required
