@@ -37,7 +37,7 @@ I built the backend first and tested the routes using curl scripts, then used se
 - Add a resource to keep track of your party and the state of city
 - Work on responsive design
 
-### Images
+### App Image
 
   ![Wireframe Image](./public/20190829_screenshot.png)
 
