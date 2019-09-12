@@ -65,6 +65,7 @@ main {
 }
 
 .char-wrapper {
+  // align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -130,6 +131,10 @@ main {
 }
 
 @media (max-width: 992px) {
+  .char-info {
+    width: 60%;
+  }
+
   .char-list-item {
     width: 100%;
   }
@@ -141,6 +146,14 @@ main {
 }
 
 @media (max-width: 768px) {
+  .char-info {
+    width: 90%;
+
+    h4 {
+      font-size: 1.2em;
+    }
+  }
+
   .char-list-img {
     margin-bottom: ($spacer);
   }
@@ -171,6 +184,10 @@ main {
 }
 
 @media (max-width: 576px) {
+  .char-info {
+    width: 100%;
+  }
+
   .char-list-info {
     justify-content: center;
   }
@@ -190,6 +207,10 @@ main {
   .class-list-img {
     height: 200px;
     width: 140px;
+  }
+
+  .header {
+    font-size: 1.6em;
   }
 
   .mobile-h4 {

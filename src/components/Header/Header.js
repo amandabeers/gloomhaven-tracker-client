@@ -25,7 +25,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar className="nav-color" variant="dark" expand="md" collapseOnSelect>
+  <Navbar className="nav-color" variant="dark" expand="lg" collapseOnSelect>
     <Navbar.Brand className="header-font" href="#">
       Gloomhaven Character Log
     </Navbar.Brand>
