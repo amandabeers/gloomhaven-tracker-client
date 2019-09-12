@@ -9,6 +9,16 @@ main {
   margin: auto;
 }
 
+.button-color {
+  background-color: $nav-theme;
+  border-color: $nav-theme;
+
+  &:hover {
+    background-color: #a3211d;
+    border-color: #a3211d;
+  }
+}
+
 .char-list-img {
   border-radius: 5px;
   height: 140px;

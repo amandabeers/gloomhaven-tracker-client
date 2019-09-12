@@ -35,7 +35,7 @@ class Home extends Component {
       <div className='home-wrapper'>
         <h2 className="header">Gloomhaven Character Log</h2>
         <p>This app can be used to keep track of character information and status for the game Gloomhaven.</p>
-        {(!this.props.user) ? <Button onClick={this.onDemoSignIn} size="sm">Log in to Demo Account</Button> : ''}
+        {(!this.props.user) ? <Button onClick={this.onDemoSignIn} size="sm" className="button-color">Log in to Demo Account</Button> : ''}
         <hr/>
         <div className="home-imgs">
           <img className="char-home-img" src={`${process.env.PUBLIC_URL}/char_img/img_br.jpg`} alt={'An image of the Brute class'}/>
