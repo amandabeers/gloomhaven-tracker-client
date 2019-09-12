@@ -39,10 +39,10 @@ class Roles extends Component {
           <h2 className="header text-center">Gloomhaven Starter Classes</h2>
           <div className="d-flex flex-wrap justify-content-center">
             {roles.map(role => (
-              <div key={role.id} className="mb-5 pl-2 pr-2">
-                <h4 className="text-center">{role.role_name}</h4>
+              <div key={role.id} className="mb-5 col-6 col-sm-4">
+                <h4 className="text-center header-font mobile-h4">{role.role_name}</h4>
                 <Link to={`/roles/${role.id}`}>
-                  <img src={`${process.env.PUBLIC_URL}/char_img_sm/${role.char_img_sm}`} alt={`An image of the ${role.role_name}`}/>
+                  <img className="class-list-img" src={`${process.env.PUBLIC_URL}/char_img_sm/${role.char_img_sm}`} alt={`An image of the ${role.role_name}`}/>
                 </Link>
               </div>
             ))}

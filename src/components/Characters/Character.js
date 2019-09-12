@@ -164,7 +164,7 @@ class Character extends Component {
               <div className="char-info">
                 <h4 className="char-header">{character.name} | {character.role.role_name} | Level {character.level}</h4>
 
-                <Navbar bg="light" expand="lg">
+                <Navbar bg="light" expand="lg" collapseOnSelect>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

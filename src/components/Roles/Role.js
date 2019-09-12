@@ -35,11 +35,12 @@ class Role extends Component {
             <h3 className="header text-center">{role.role_name}</h3>
             <div className="class-wrapper">
               <img className="class-img" src={`${process.env.PUBLIC_URL}/char_img/${role.char_img}`} alt={`An image of the ${role.role_name}`}/>
-              <div className="w-50 pl-3">
+              <div className="class-info">
                 <p>{role.description}</p>
                 {(this.props.user) ? <Button className="mb-2" href={`#/roles/${role.id}/create-character`}>Choose this Class</Button> : <p><Link to='/sign-in'>Sign in</Link> or <Link to='/sign-up'>sign up</Link> to create a character with this class!</p>}
-                <br/>
-                <Link to='/roles'>Back to all classes</Link>
+                <div>
+                  <Link to='/roles'>Back to all classes</Link>
+                </div>
               </div>
             </div>
           </Fragment>

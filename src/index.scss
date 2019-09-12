@@ -1,5 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 
+$nav-theme: #f32d27;
+$neutral-accent: #705d56;
+
 main {
   align-self: center;
   justify-self: center;
@@ -55,17 +58,29 @@ main {
   margin: auto;
 }
 
-.class-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.class-list-img {
+  display: block;
+  height: 300px;
   margin: auto;
-  width: 75%;
+  width: 215px;
 }
 
 .class-img {
   height: 490px;
   width: 350px;
+}
+
+.class-info {
+  width: 50%;
+  padding-left: ($spacer);
+}
+
+.class-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  // width: 75%;
 }
 
 .header {
@@ -92,5 +107,45 @@ main {
 }
 
 .nav-color {
-  background-color: #f32d27;
+  background-color: $nav-theme;
+}
+
+@media (max-width: 992px) {
+  .class-img {
+    height: 370px;
+    width: 265px;
+  }
+}
+
+@media (max-width: 768px) {
+  .class-img {
+    height: 280px;
+    width: 200px;
+  }
+
+  .class-info {
+    padding: ($spacer);
+    text-align: center;
+    width: 85%;
+  }
+
+  .class-list-img {
+    height: 225px;
+    width: 160px;
+  }
+}
+
+@media (max-width: 576px) {
+  .class-info {
+    width: 100%;
+  }
+
+  .class-list-img {
+    height: 200px;
+    width: 140px;
+  }
+
+  .mobile-h4 {
+    font-size: 1.2em;
+  }
 }
