@@ -12,7 +12,19 @@ main {
 .char-list-img {
   border-radius: 5px;
   height: 140px;
+  margin: 0 ($spacer * .5);
   width: 100px;
+}
+
+.char-list-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.char-list-item {
+  margin: auto;
+  width: 62%;
 }
 
 .char-list-stats {
@@ -27,6 +39,7 @@ main {
 .char-list-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin: auto;
   // width: 75%;
 }
@@ -110,7 +123,17 @@ main {
   background-color: $nav-theme;
 }
 
+@media (max-width: 1200px) {
+  .char-list-item {
+    width: 75%;
+  }
+}
+
 @media (max-width: 992px) {
+  .char-list-item {
+    width: 100%;
+  }
+
   .class-img {
     height: 370px;
     width: 265px;
@@ -118,6 +141,18 @@ main {
 }
 
 @media (max-width: 768px) {
+  .char-list-img {
+    margin-bottom: ($spacer);
+  }
+
+  .char-list-stats {
+    width: 28vh;
+
+    h5 {
+      font-size: 1em;
+    }
+  }
+
   .class-img {
     height: 280px;
     width: 200px;
@@ -136,6 +171,18 @@ main {
 }
 
 @media (max-width: 576px) {
+  .char-list-info {
+    justify-content: center;
+  }
+
+  .char-list-stats {
+    width: 40vh;
+
+    h5 {
+      font-size: 1em;
+    }
+  }
+
   .class-info {
     width: 100%;
   }

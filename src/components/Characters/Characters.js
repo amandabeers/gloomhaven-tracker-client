@@ -51,15 +51,15 @@ class Characters extends Component {
     } else if (characters) {
       return (
         <Fragment>
-          <h2 className="header">Characters</h2>
+          <h2 className="header text-center">Characters</h2>
           <ListGroup>
             {characters.map(char => (
               <Link to={`/characters/${char.id}`} key={char.id} style={{ textDecoration: 'none' }}>
-                <ListGroup.Item>
+                <ListGroup.Item className="char-list-item">
                   <div className="char-list-wrapper">
                     <img className="char-list-img" src={`${process.env.PUBLIC_URL}/char_img/${char.role.char_img}`} alt={`An image of the ${char.role.role_name}`}/>
-                    <div className="d-flex flex-wrap align-items-center">
-                      <div className="ml-4">
+                    <div className="char-list-info">
+                      <div className="ml-2 mr-2">
                         <div className="char-list-stats">
                           <h5 className="pb-0 mb-0">Name</h5>
                           <h5 className="pb-0 mb-0">{char.name}</h5>
@@ -73,7 +73,7 @@ class Characters extends Component {
                           <h5 className="pb-0 mb-0">{char.level}</h5>
                         </div>
                       </div>
-                      <div className="ml-4">
+                      <div className="ml-2 mr-2">
                         <div className="char-list-stats">
                           <h5 className="pb-0 mb-0">Location</h5>
                           <h5 className="pb-0 mb-0">{char.location}</h5>
