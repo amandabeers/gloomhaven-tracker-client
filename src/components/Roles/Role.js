@@ -37,6 +37,8 @@ class Role extends Component {
               <img className="class-img" src={`${process.env.PUBLIC_URL}/char_img/${role.char_img}`} alt={`An image of the ${role.role_name}`}/>
               <div className="class-info">
                 <p>{role.description}</p>
+                <Button className="mb-2" variant="info" href={`#/roles/${role.id}/ability-cards`}>View Ability Cards</Button>
+                <br />
                 {(this.props.user) ? <Button className="mb-2" href={`#/roles/${role.id}/create-character`}>Choose this Class</Button> : <p><Link to='/sign-in'>Sign in</Link> or <Link to='/sign-up'>sign up</Link> to create a character with this class!</p>}
                 <div>
                   <Link to='/roles'>Back to all classes</Link>

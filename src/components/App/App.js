@@ -10,6 +10,7 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Roles from './../Roles/Roles'
 import Role from './../Roles/Role'
+import AbilityCards from './../Roles/AbilityCards'
 import Characters from './../Characters/Characters'
 import Character from './../Characters/Character'
 import CreateCharacter from './../Characters/CreateCharacter'
@@ -72,6 +73,9 @@ class App extends Component {
           )} />
           <Route exact path='/roles/:id' render={() => (
             <Role user={user} alert={this.alert}/>
+          )} />
+          <Route exact path='/roles/:id/ability-cards' render={() => (
+            <AbilityCards alert={this.alert}/>
           )} />
           <AuthenticatedRoute user={user} exact path='/roles/:id/create-character' render={() => (
             <CreateCharacter alert={this.alert} user={user} />
