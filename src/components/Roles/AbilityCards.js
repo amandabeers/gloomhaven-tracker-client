@@ -33,10 +33,11 @@ class AbilityCards extends Component {
         {abilityCards.length > 0 && (
           <Fragment>
             <h3 className="header text-center">{abilityCards[0].role.role_name} Ability Cards</h3>
-            <div>
-              {abilityCards.map(abilityCard => (
+            <hr/>
+            <div className="ability-card-wrapper">
+              {abilityCards.reverse().map(abilityCard => (
                 <Fragment key={abilityCard.id}>
-                  <img src={abilityCard.img} alt={`An image of a ${abilityCard.role.role_name} ability card`}/>
+                  <img className="ability-card-img" src={abilityCard.img} alt={`An image of the ${abilityCard.role.role_name} Level ${abilityCard.level === 0 ? 'X' : abilityCard.level} ability card ${abilityCard.name}`}/>
                 </Fragment>
               ))}
             </div>
