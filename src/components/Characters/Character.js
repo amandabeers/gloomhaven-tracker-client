@@ -188,7 +188,7 @@ class Character extends Component {
                   <p>{character.location}</p>
                   <h5 className="char-section-header">Experience</h5>
                   <div className="d-flex justify-content-between">
-                    <p>Total: {character.experience} | {character.level === 9 ? ('You are at max level') : (nextLevelXp > character.experience ? `Until next level: ${nextLevelXp - character.experience}` : 'You can level up once in Gloomhaven')}</p>
+                    <p>Total: {character.experience} | {character.level === 9 ? ('You are at max level') : (nextLevelXp > character.experience ? `Until next level: ${nextLevelXp - character.experience}` : character.location === 'Gloomhaven' ? 'You can level up' : 'You can level up once in Gloomhaven')}</p>
                     {(canCharLevel && character.location === 'Gloomhaven') ? <Button variant="success" size="sm" onClick={this.handleLevelUp}>Level Up</Button> : ''}
                   </div>
                   <h5 className="char-section-header">Gold</h5>

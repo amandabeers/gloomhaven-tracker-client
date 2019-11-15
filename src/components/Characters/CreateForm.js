@@ -29,7 +29,7 @@ const CreateForm = ({ character, handleChange, handleSubmit }) => (
         required
       />
     </Form.Group>
-    <Button variant="primary" type="submit">
+    <Button variant="primary" type="submit" className="mr-2">
       Submit
     </Button>
     <Button variant="danger" type="button" as="a" href='#roles'>
